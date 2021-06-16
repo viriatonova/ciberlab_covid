@@ -1,11 +1,10 @@
-# ciberlab_covid
+![](Images/banner_covid_ciberlab.jpg)
 
-Research data about COVID-19 of the media communication - Stricto Digital
+## DATA REFERENCE
 
-## Referência dos dados
----
 * ### Brasil Io
 
->Site <https://brasil.io/home/>
+>Web site: <https://brasil.io/home/>
 
->Documentação: <https://github.com/turicas/covid19-br/blob/master/api.md
+>Documentation: <https://github.com/turicas/covid19-br/blob/master/api.md>
+
