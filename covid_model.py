@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('/home/viriato/Documentos/projects/ciberlab_covid/data_base/caso_full.csv', index_col='city')
-#data_palmeiras.to_excel('Palmeiras_casos.xlsx', sheet_name='data_palmeiras', index=False)
-
+data = pd.read_csv('/home/viriato/megaterio/cybertech/ciberlab_covid/data_base/caso_full.csv', index_col='city')
 
 def data_cidade(data, cidade):
     ''' 
@@ -18,4 +16,7 @@ def data_cidade(data, cidade):
 
 if __name__ == '__main__':
     
-    print(data_cidade(data, "Palmeiras"))
+    palmeiras_excel = data_cidade(data, "Palmeiras")
+    palmeiras_excel.to_excel('Palmeiras_casos.xlsx', sheet_name='data_palmeiras', index=False)
+
+
