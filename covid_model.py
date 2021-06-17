@@ -10,9 +10,9 @@ def data_cidade(data, cidade, tags):
     return data_cidade
 
 
-def data_comparado(data, municipios, tags):
+def data_select(data, municipios, tags):
     '''
-    Comparando dados vários municipios.
+    Selecionando dados de municipios especificos.
     '''
     for cidade in municipios:
         if cidade == municipios[0]:
@@ -23,6 +23,24 @@ def data_comparado(data, municipios, tags):
     return data_municipios
 
 
+def data_anual(data_municipios, minicipios):
+    data_covid_select = pd.DataFrame(
+        {
+            'Palmeiras':
+            'Seabra':
+            'Lençoís':
+            'Mucugê':
+            'Andaraí':
+            'Ibicoara':
+         }
+    )
+    for cidade in data_municipios.loc[municipios]:
+        
+    return
+
+
+
+
 if __name__ == '__main__':
     
     # download o arquivo caso_full.csv no link -> https://brasil.io/dataset/covid19/files/
@@ -30,11 +48,8 @@ if __name__ == '__main__':
     
     tags = ['date', 'estimated_population', 'last_available_confirmed', 'last_available_deaths', 
     'new_deaths', 'last_available_date']
-
     municipios = ['Palmeiras', 'Seabra', 'Lençóis', 'Mucugê', 'Andaraí', 'Ibicoara']
-    
-    chapada_1 = data_comparado(data, municipios, tags)
-    chapada_1.to_excel('Covid_chapada.xlsx', index=True)
+    chapada_1 = data_select(data, municipios, tags)
 
-    '''palmeiras_excel = data_cidade(data, "Palmeiras")
-    palmeiras_excel.to_excel('Palmeiras_casos.xlsx', sheet_name='data_palmeiras', index=False)'''
+    #print(chapada_1.set_index('date'))
+    #chapada_1.to_excel('Covid_chapada.xlsx', index=True)
