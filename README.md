@@ -2,11 +2,13 @@
 
 ## CONTEÚDO / CONTENT
 
-1. [DESCRIÇÃO / DESCRIPTION](#descrição-/-description)
-2. [METODOLOGIA / METHODOLOGY](#metodologia-/-methodology)
-3. [REFERENCIA DE DADOS / DATA REFERENCE](#referencia-de-dados-/-data-reference)
+1. [DESCRIPTION](#description)
+2. [METHODOLOGY](#methodology)
+3. [DATA REFERENCE](#data-reference)
+4. 
+5. 
 
-## DESCRIÇÃO / DESCRIPTION
+## DESCRIPTION
 
 Este projeto visa fazer um trabalho de jornalismo de dados sobre o COVID-19 relacionando dados gerais da pandemia com os dados gerados no Brasil, mais especificamente no estado da Bahia e em sua localidade Chapada Diamantina. 
 
@@ -18,12 +20,11 @@ This project aims to carry out data journalism work on COVID-19, relating genera
 
 Despite the ongoing monitoring and study of pandemic data, access to information in Brazil is still neglected for most of the population. This is a journalistic initiative that accompanies several work in data science, as well as Brasil Io, in the direction of translating information for a general population.
 
-## METODOLOGIA / METHODOLOGY
+## METHODOLOGY
 
 Em construção / work on it
 
-
-## REFERENCIA DE DADOS / DATA REFERENCE
+## DATA REFERENCE
 
 * ### Brasil Io
 
