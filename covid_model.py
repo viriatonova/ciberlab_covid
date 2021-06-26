@@ -15,15 +15,24 @@ def data_cidade(data, cidade, tags, tag_analise) -> DataFrame:
     return data_cidade
 
 
-def data_select(data, municipios, tags):
+def data_select(data, cidades, tags, tag_analise) -> DataFrame:
     '''
     Selecionando dados de municipios especificos.
     '''
-    data_municipios = data.set_index('city')
-    for cidade in municipios:
-        if cidade == municipios[0]:
-            data_municipios = data.loc[cidade, tags]
+    for cidade in cidades:
+        if cidade == cidades[0]:
+            municipio = data_cidade(data, cidade, tags, tag_analise)
+            municipio = municipio.set_index('date')
+            df = municipio.resample('M').max()
+            df.reset_index(level=0, inplace=True)   
+            df.rename(columns={tag_analise : f'{cidade} casos'})
         else:
-            cidade_check = data.loc[cidade, tags]
-            data_municipios = data_municipios.append(cidade_check)
-    return data_municipios
+            df1 = data_cidade(data, cidade, tags, tag_analise)
+            df1 = df1.set_index('date')
+            df2 = df1.resample('M').max()
+            df2.reset_index(level=0, inplace=True) 
+            df2.columns = pd.MultiIndex.from_product([[cidade], df2.columns])
+            df2.rename(columns={tag_analise: f'{cidade} casos'})
+            df = pd.concat([df, df2])
+    municipio_select = df
+    return municipio_select
