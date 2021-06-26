@@ -3,6 +3,18 @@ import numpy as np
 from pandas.core.frame import DataFrame
 
 
+def verification_city(data, cidades) -> None:
+    '''
+    Verifica se o nome da cidade consta
+    no arquivo de dados
+    '''
+    for cidade in cidades:
+        df = data.set_index('city')
+        verify = cidade in df.index
+        print(f'{cidade} - {verify}')
+    return None
+
+
 def data_cidade(data, cidade, tags, tag_analise) -> DataFrame:
     ''' 
     Isolando os dados do municipio por tags 
