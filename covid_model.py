@@ -18,7 +18,7 @@ def verification_city(data, cidades) -> None:
 def data_cidade(data, cidade, tags, tag_analise) -> DataFrame:
     ''' 
     Isolando os dados do municipio por tags 
-    e remove duplocadas de dados
+    e remove duplicatas de dados
     '''
     df = data.set_index('city')
     data_cidade = df.loc[cidade, tags]
@@ -29,7 +29,8 @@ def data_cidade(data, cidade, tags, tag_analise) -> DataFrame:
 
 def data_select(data, cidades, tags, tag_analise) -> DataFrame:
     '''
-    Selecionando dados de municipios especificos.
+    Selecionando dados de municipios por parametro e 
+    reunindo em um dataframe
     '''
     for cidade in cidades:
         if cidade == cidades[0]:
