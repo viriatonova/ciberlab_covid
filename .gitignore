@@ -1,3 +1,7 @@
-#some csv files are to big for github
+# Some csv files are to big for github
 *.csv
 *.pyc
+
+# Folders
+__pycache__/
+data_base/
