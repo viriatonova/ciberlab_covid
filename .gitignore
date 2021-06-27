@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FILES
 *.csv 
 *.pyc
@@ -6,3 +7,12 @@
 # FOLDERS 
 __paycache__/
 data_base/
+=======
+# Some csv files are to big for github
+*.csv
+*.pyc
+
+# Folders
+__pycache__/
+data_base/
+>>>>>>> 9569cee34f7f27d79bea77ff631a8f7bff7c3b8f
