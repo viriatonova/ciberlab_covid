@@ -1,9 +1,14 @@
+import openpyxl
 from covid_model import *
+import pandas as pd
+import numpy as np
+from openpyxl import load_workbook
 
-#tags_casos_full : 'last_available_deaths' / 'last_available_confirmed'
+
+#tags_casos_full : 'last_available_deaths' / 'last_available_confirmed' / 'date' / 
 
 # download o arquivo caso_full.csv no link -> https://brasil.io/dataset/covid19/files/
-data = pd.read_csv('/home/viriato/Documentos/projects/ciberlab_covid/data_base/caso_full.csv')
+data = pd.read_csv('/home/viriato/megaterio/cybertech/ciberlab_covid/data_base/caso_full.csv')
 tags = ['date', 'last_available_deaths']
 tag_analise = 'last_available_deaths'
 
@@ -98,19 +103,21 @@ vale_francisco = [
 'Juazeiro', 'Sobradinho', 'Remanso', 'Curaçá', 'Sento Sé'
 ]
 
-zonas_bahia = {
-'circuito da chapada norte': chapada_norte, 'circuito do diamante': diamante, 'circuito do ouro': ouro,
-'circuito chapada velha': velha, 'bahia de todos os santos':todos_santos, 'caminhos do jequiriça': jequiriça,
-'caminhos do oeste': oeste, 'caminhos do sudoeste': sudoeste, 'caminhos do sertão': sertao, 'costa do dende': dende,
-'costa dos coqueiros': coqueiros, 'costa do cacau': cacau, 'costa das baleias': baleias, 'costa do descobriment': descobrimento,
-'lagos e canios do sao francisco': francisco, 'vale do sao francisco': vale_francisco
- }
+zonas_bahia = [
+chapada_norte, diamante, ouro, velha, todos_santos, jequiriça,
+oeste, sudoeste, sertao, dende, coqueiros, cacau, baleias, descobrimento,
+francisco, vale_francisco
+]
 
-for k, v in zonas_bahia:
-    covid = data_select(data, v, tags, tag_analise)
-    covid.to_excel("chapada_norte.xlsx")
+path = '/home/viriato/megaterio/cybertech/ciberlab_covid/zonas_bahia.xlsx'
+book = load_workbook(path)
+covid = pd.ExcelWriter(path, engine='openpyxl')
+covid.book = book
 
-'''
-# Verification tag existence
-verification_city(data, vale_francisco)
-'''
+cont = 0
+for zona in zonas_bahia:
+    tur_bahia = data_select(data, zona, tags, tag_analise)
+    tur_bahia.to_excel(covid, sheet_name=f'zona{cont}')
+    covid.save()
+    cont += 1
+covid.close()
