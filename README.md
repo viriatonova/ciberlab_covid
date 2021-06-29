@@ -5,12 +5,10 @@
 1. [DESCRIPTION](#description)
 2. [METHODOLOGY](#methodology)
 3. [DATA REFERENCE](#data-reference)
-4. 
-5. 
 
 ## DESCRIPTION
 
-Este projeto visa fazer um trabalho de jornalismo de dados sobre o COVID-19 relacionando dados gerais da pandemia com os dados gerados no Brasil, mais especificamente no estado da Bahia e em sua localidade Chapada Diamantina. 
+Este projeto visa fazer um trabalho de jornalismo de dados sobre o COVID-19 relacionando dados gerais da pandemia com os dados gerados no Brasil, mais especificamente no estado da Bahia e em sua localidade Chapada Diamantina.
 
 Apesar do acompanhamento e estudo permanente dos dados da pandemia, no Brasil o acesso a informação ainda é negligenciado para a maior parte da população. Esta é uma iniciativa jornalistica que acompanha diversos trabalho na ciência de dados, assim como o Brasil Io, na direção de traduzir a informação para a população geral.
 
@@ -28,12 +26,10 @@ Em construção / work on it
 
 * ### Brasil Io
 
->Web site: <https://brasil.io/home/>
+> Web site: [https://brasil.io/home/](https://brasil.io/home/)
 
->Documentação / Documentation: <https://github.com/turicas/covid19-br/blob/master/api.md>
-
+> Documentação / Documentation: [https://github.com/turicas/covid19-br/blob/master/api.md](https://github.com/turicas/covid19-br/blob/master/api.md)
 
 * ### Open Data SUS
 
->Web site: <https://opendatasus.saude.gov.br/>
-
+> Web site: [https://opendatasus.saude.gov.br/](https://opendatasus.saude.gov.br/)

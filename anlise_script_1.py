@@ -9,8 +9,8 @@ from openpyxl import load_workbook
 
 # download o arquivo caso_full.csv no link -> https://brasil.io/dataset/covid19/files/
 data = pd.read_csv('/home/viriato/megaterio/cybertech/ciberlab_covid/data_base/caso_full.csv')
-tags = ['date', 'last_available_deaths']
-tag_analise = 'last_available_deaths'
+tags = ['date', 'last_available_confirmed']
+tag_analise = 'last_available_confirmed'
 
 # Chapada Diamantina
     # Circuito da Chapa Norte
@@ -117,7 +117,7 @@ covid.book = book
 cont = 0
 for zona in zonas_bahia:
     tur_bahia = data_select(data, zona, tags, tag_analise)
-    tur_bahia.to_excel(covid, sheet_name=f'zona{cont}')
+    tur_bahia.to_excel(covid, sheet_name=f'zona{cont}', index=False)
     covid.save()
     cont += 1
 covid.close()
