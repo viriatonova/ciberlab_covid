@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from pandas.core.frame import DataFrame
 
 
@@ -12,40 +11,43 @@ def verification_city(data, cidades) -> None:
         df = data.set_index('city')
         verify = cidade in df.index
         print(f'{cidade} - {verify}')
-    return None
 
 
-def data_cidade(data, cidade, tags, tag_analise) -> DataFrame:
-    ''' 
-    Isolando os dados do municipio por tags 
+def data_cidade(data: DataFrame, cidade: str, tags: list[str], tag_analise: str) -> DataFrame:
+    """
+    Isolando os dados do municipio por tags
     e remove duplicatas de dados
-    '''
+    """
+
     df = data.set_index('city')
     data_cidade = df.loc[cidade, tags]
     data_cidade = data_cidade.drop_duplicates(subset=tag_analise, keep='first')
     data_cidade['date'] = pd.to_datetime(data_cidade['date'])
+
     return data_cidade
 
 
-def data_select(data, cidades, tags, tag_analise) -> DataFrame:
-    '''
-    Selecionando dados de municipios por parametro e 
-    reunindo em um dataframe
-    '''
+def select_data(data: DataFrame, cidades: list[str], tags: list[str], tag_analise: str) -> DataFrame:
+    """
+    Seleciona dados de municípios por parametros e
+    retorna em um DataFrame.
+    """
+
+    first = True
     for cidade in cidades:
-        if cidade == cidades[0]:
-            municipio = data_cidade(data, cidade, tags, tag_analise)
-            municipio = municipio.set_index('date')
-            df = municipio.resample('M').max()
-            df.reset_index(level=0, inplace=True)   
-            df.rename(columns={tag_analise : f'{cidade} casos'})
+        municipio = data_cidade(data, cidade, tags, tag_analise)
+        municipio.set_index('date', inplace=True)
+        municipio = municipio.resample('M').max()
+        municipio = municipio.reset_index(level=0)
+        municipio = municipio.rename(
+            columns={tag_analise: f'Casos {cidade}'})
+        if first:
+            first = False
+            municipios = municipio
         else:
-            df1 = data_cidade(data, cidade, tags, tag_analise)
-            df1 = df1.set_index('date')
-            df2 = df1.resample('M').max()
-            df2.reset_index(level=0, inplace=True) 
-            df2.columns = pd.MultiIndex.from_product([[cidade], df2.columns])
-            df2.rename(columns={tag_analise: f'{cidade} casos'})
-            df = pd.concat([df, df2])
-    municipio_select = df
-    return municipio_select
+            municipios = pd.merge(municipios, municipio,
+                                    how='outer', on='date')
+
+        municipios.fillna(0, inplace=True)
+        
+    return municipios
